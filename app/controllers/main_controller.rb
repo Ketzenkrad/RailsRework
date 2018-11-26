@@ -1,5 +1,8 @@
 class MainController < ApplicationController
   def index
     ###
+    Rails.logger.info '############'
+    Rails.logger.info params.inspect
+    Rails.logger.info '############'
   end
 end
