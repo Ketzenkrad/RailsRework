@@ -7,10 +7,11 @@ class CreateUsers < ActiveRecord::Migration[5.2]
         string :email
       end
       #
-      t.with_options 
-      t.boolean :moderator, default: false
-      t.boolean :creator, default: false
-      t.boolean :banned, default: false
+      t.with_options default: false do
+      t.boolean :moderator
+      t.boolean :creator
+      t.boolean :banned
+    end
       #
       t.timestamps
     end
