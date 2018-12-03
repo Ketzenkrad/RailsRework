@@ -11,26 +11,25 @@ Post.destroy_all
 Comment.destroy_all
 
 hash_users = 10.times.map do
+  email = FFaker::Internet.safe_email
   {
-    name:FFaker::Internet.user_name[0...16],
-    email:FFaker::Internet.safe_email
+    name: FFaker::Internet.user_name[0...16],
+    email: email,
+    password: email
   }
 end
-
 users = User.create! hash_users
+users.first(7).each { |u| u.update creator: true }
+users.first(2).each { |u| u.update moderator: true }
 
-users.first(7).each { |u| u.update creator:true}
-users.first(2).each { |u| u.update moderator:true}
-creators = User.where(creator:true)
-
+creators = User.where(creator: true)
 hash_posts = 20.times.map do
   {
-  title: FFaker::HipsterIpsum.paragraph,
-  body: FFaker::HipsterIpsum.paragraphs,
-  user: creators.sample
+    title: FFaker::HipsterIpsum.paragraph,
+    body: FFaker::HipsterIpsum.paragraphs,
+    user: creators.sample
   }
 end
-
 posts = Post.create! hash_posts
 
 hash_comments = 200.times.map do
@@ -39,8 +38,17 @@ hash_comments = 200.times.map do
     body: FFaker::HipsterIpsum.paragraphs,
     user: users.sample,
     commentable_id: commentable.id,
-​    commentable_type: commentable.class.to_s
-}
+    commentable_type: commentable.class.to_s
+  }
 end
-
 Comment.create! hash_comments
+
+# hash_comments = 200.times.map do
+#   {
+#     body: FFaker::HipsterIpsum.sentences,
+#     user: users.sample,
+#     post: posts.sample
+#   }
+# end
+#
+# Comment.create! hash_comments
