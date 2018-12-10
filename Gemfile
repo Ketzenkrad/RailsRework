@@ -39,6 +39,8 @@ group :development, :test do
   gem 'ffaker'
   gem 'jquery-rails'
   gem 'xray-rails'
+  gem 'letter_opener'
+  gem 'webpacker'
 end
 
 group :development do

@@ -42,13 +42,3 @@ hash_comments = 200.times.map do
   }
 end
 Comment.create! hash_comments
-
-# hash_comments = 200.times.map do
-#   {
-#     body: FFaker::HipsterIpsum.sentences,
-#     user: users.sample,
-#     post: posts.sample
-#   }
-# end
-#
-# Comment.create! hash_comments

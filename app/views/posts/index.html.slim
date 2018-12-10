@@ -1,0 +1,22 @@
+p#notice
+  = notice
+h1
+  | Posts
+table
+  thead
+    tr
+      th
+        | Title
+      th
+        | Body
+      th
+        | User
+      th
+        | Visible
+      th[colspan="3"]
+  tbody
+    - @posts.each do |post|
+      = render partial: 'post', collection: @posts
+br
+= paginate @posts
+= link_to 'New Post', new_post_path
