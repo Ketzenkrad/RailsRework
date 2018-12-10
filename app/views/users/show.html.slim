@@ -1,0 +1,25 @@
+p#notice
+  = notice
+p
+  strong
+    | Id:
+  = @user.id
+p
+  strong
+    | Name:
+  = @user.name
+p
+  strong
+    | Email:
+  = @user.email
+p
+  strong
+    | Comment:
+  = @user.comment
+p
+  strong
+    | Visible:
+  = @user.visible
+= link_to 'Edit', edit_user_path(@user)
+|  | 
+= link_to 'Back', users_path

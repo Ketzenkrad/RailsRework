@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title
+      | Blog
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  body
+    main.container
+      header
+        .d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-dark.text-white.border-bottom.shadow.p-3.mb-5
+          h5.my-0.mr-md-auto.font-weight-bold
+            | Ruby on Rails + Bootstrap 4, v.2
+          nav.my-2.my-md-2.mr-md-2
+            span.btn.btn-light.p-7
+              = link_to "На главную", home_path
+            span.btn.btn-light.p-7
+              = link_to "Обо мне", about_path
+            span.btn.btn-light.p-7
+              = link_to "Посты", posts_path
+      section.yield.d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-dark.text-white.border-bottom.shadow.p-3.mb-5
+        = yield
+      footer.d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-dark.text-white.border-bottom.shadow.p-3.mb-5
+        p.align-items-cente
+          | Rails blog, 2018
